@@ -5,7 +5,7 @@ const url = "http://127.0.0.1:3001/api/customers/";
 
 const Customer = (props) => {
   const [clientes, setClientes] = useState([]);
-
+  const cliente = null;
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(url, {
@@ -22,16 +22,16 @@ const Customer = (props) => {
     }
 
     fetchData();
-  }, []);
 
-  const cliente = clientes.filter((cliente) => cliente.email == props.email);
+    cliente = clientes.filter((cliente) => cliente.email === props.email);
+  }, []);
 
   return (
     <div>
-      <h2>name = {cliente[0].name}</h2>
-      <h2>address = {cliente[0].address}</h2>
-      <h2>birthdate = {cliente[0].birthdate}</h2>
-      <h2>email = {cliente[0].email}</h2>
+      <h2>name = {cliente.name}</h2>
+      <h2>address = {cliente.address}</h2>
+      <h2>birthdate = {cliente.birthdate}</h2>
+      <h2>email = {cliente.email}</h2>
       <h2>Acountos =</h2>
       {cliente.acounts.map((acount) => (
         <h3>{acount}</h3>
